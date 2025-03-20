@@ -20,6 +20,7 @@ A **Next.js Pokémon Explorer** that allows users to browse, search, filter, and
 ### **1️⃣ Clone the Repository**
 
 git clone https://github.com/harishbade27/pokemon-explorer
+
 cd pokemon-explorer
 
 ## 2️⃣ Install Dependencies
