@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import axios from "axios"; 
+import axios from "axios";
 
 const Home = () => {
   // State variables
-  const [pokemons, setPokemons] = useState([]); // Stores the fetched Pokémon list
+  // const [pokemons, setPokemons] = useState([]); // Stores the fetched Pokémon list
   const [searchTerm, setSearchTerm] = useState(""); // Stores search input value
   const [offset, setOffset] = useState(0); // Tracks pagination offset
   const [loading, setLoading] = useState(true); // Manages loading state
@@ -32,10 +32,10 @@ const Home = () => {
           })
         );
 
-        setPokemons(pokemonList);
+        // setPokemons(pokemonList);
         setPokemonDetails(detailedData);
       } catch (error) {
-        console.error("Error fetching Pokémon data:", error);
+        console.log("Error fetching Pokémon data:", error);
       } finally {
         setLoading(false);
       }
@@ -103,7 +103,7 @@ const Home = () => {
       {/* Loading Spinner (Displayed While Fetching Data) */}
       {loading ? (
         <div className="flex items-center justify-center min-h-[200px]">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid" />
         </div>
       ) : (
         // Pokémon Grid (Displays Pokémon List)
@@ -127,25 +127,27 @@ const Home = () => {
       <div className="mt-6 flex space-x-4">
         {/* Previous Button */}
         <button
+          type="button"
           disabled={offset === 0 || loading}
           onClick={() => setOffset(offset - limit)}
           className="relative flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"></path>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
           Previous
         </button>
 
         {/* Next Button */}
         <button
+          type="button"
           disabled={loading}
           onClick={() => setOffset(offset + limit)}
           className="relative flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl hover:from-purple-600 hover:to-purple-800 transition-all duration-300 transform hover:scale-105 disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed"
         >
           Next
           <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"></path>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>

@@ -21,7 +21,7 @@ const PokemonDetail = () => {
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
         setPokemon(res.data);
       } catch (error) {
-        console.error("Error fetching Pokémon:", error);
+        console.log("Error fetching Pokémon:", error);
       } finally {
         setLoading(false);
       }
@@ -37,7 +37,7 @@ const PokemonDetail = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500" />
       </div>
     );
   }
